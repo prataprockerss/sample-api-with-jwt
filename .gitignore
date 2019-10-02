@@ -1,0 +1,14 @@
+node_modules
+
+/config/firebase.js
+
+/package-lock.json
+
+/*DS_Store
+*/DS_STORE
+
+/public/sass/.sass-cache
+
+/public/styles/styles.css.map
+
+/designs
