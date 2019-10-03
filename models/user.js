@@ -1,21 +1,22 @@
 const { DB } = require('../config/constants')
 
 module.exports = {
-    userList: async (con, {mobile}) => {
+    userList: async (con, {user_id,mobile} = {}) => {
         let query = `
             SELECT 
                 u.first_name, u.last_name,u.mobile,
                 concat(u.first_name, " ", u.last_name ) as full_name,
                 ud.salary
             FROM 
-                ${DB.user} u 
+                ${DB.USER} u 
             LEFT JOIN 
                 ${DB.USER_DETAIL} ud 
-            ON 
+            ON
                 u.id = ud.user_id
             WHERE 
                 1 = 1
         `
+        query +=  user_id ? ` AND u.id = "${user_id}"` : ``;
         query +=  mobile ? ` AND u.mobile = "${mobile}"` : ``;
 
         return await con.query(query)
