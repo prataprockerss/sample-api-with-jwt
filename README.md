@@ -1,4 +1,4 @@
-# virtusa user details
+# User details
 
 ## How to start
 
